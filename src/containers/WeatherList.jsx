@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
-
-export default class WeatherList extends Component {
-    constructor(props) {
-        super(props);
+class WeatherList extends Component {
+    renderWeather(cityData){
+        const name = cityData.city.name;
+        const temps = cityData.list.map( weather => weather.main.temp )
+        
+        return(
+            <tr key={name}>
+                <td>{name}</td>
+                <td>
+                    <Sparklines height={120} width={120} data={temps}>
+                        <SparklinesLine color="red"/>
+                    </Sparklines>
+                </td>
+            </tr>
+        )
     }
     render() {
         return (
@@ -18,15 +30,16 @@ export default class WeatherList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {this.props.weather.map(this.renderWeather)}
                 </tbody>
             </table>
         )
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ fetchWeather }, dispatch);
-// }
+function mapStateToProps({weather}) {
+    return { weather }
+}
 
+export default connect(mapStateToProps)(WeatherList)
 // export default connect(null, mapDispatchToProps)(SearchBar);
