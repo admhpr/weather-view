@@ -6,41 +6,35 @@ import Chart from '../components/Chart';
 class WeatherList extends Component {
     renderWeather(cityData){
         const name = cityData.city.name;
-        const temps = cityData.list.map( weather => weather.main.temp )
+        const temps = cityData.list.map( weather => weather.main.temp - 273.15 ) // convert K to C
         const pressures = cityData.list.map( weather => weather.main.pressure )
         const humidities = cityData.list.map( weather => weather.main.humidity )
         
-        return(
-            <tr key={name}>
-                <td>{name}</td>
-                <td>
-                    <Chart data={temps} colour="orange"/>
-                </td>
-                <td>
-                    <Chart data={pressures} colour="green" />
-                </td>
-                <td>
-                    <Chart data={humidities} colour="gray" />
-                </td>
-            </tr>
-        )
+        return <tr key={name}>
+            <td>{name}</td>
+            <td>
+              <Chart data={temps} colour="orange" units="°C" />
+            </td>
+            <td>
+              <Chart data={pressures} colour="green" units="hPa"/>
+            </td>
+            <td>
+              <Chart data={humidities} colour="gray" units="%"/>
+            </td>
+          </tr>;
     }
     render() {
-        return (
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th>City</th>
-                        <th>Temperature</th>
-                        <th>Pressure</th>
-                        <th>Humidity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.weather.map(this.renderWeather)}
-                </tbody>
-            </table>
-        )
+        return <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>City</th>
+                <th>Temperature (°C)</th>
+                <th>Pressure (hPa)</th>
+                <th>Humidity (%)</th>
+              </tr>
+            </thead>
+            <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
+          </table>;
     }
 }
 
