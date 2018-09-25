@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {
     API_KEY
-} from '../config'
-import { request } from 'https';
+} from '../config';
 const key = API_KEY,
       BASE_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${key}`;
 
