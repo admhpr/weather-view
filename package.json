@@ -5,10 +5,10 @@
   "main": "index.js",
   "repository": "",
   "scripts": {
-    "start": "weppack-dev-server --open --config webpack.dev.js --port 5000",
+    "start": "webpack-dev-server --open --config webpack.dev.js --port 5000",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test --watch",
-    "build": "webpack --config webpack.prod,js"
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +24,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-preset-stage-1": "^6.1.18",
+    "i": "^0.3.6",
     "lodash": "^3.10.1",
+    "npm": "^6.4.1",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-redux": "5.0.7",

@@ -44,4 +44,3 @@ function mapStateToProps({weather}) {
 }
 
 export default connect(mapStateToProps)(WeatherList)
-// export default connect(null, mapDispatchToProps)(SearchBar);
