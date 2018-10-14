@@ -17,9 +17,9 @@ td:first-of-type, td:first-of-type > div {
 }
 
 .footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 120%;
     height: 60px;
     line-height: 60px;
     background-color: #122d42;
