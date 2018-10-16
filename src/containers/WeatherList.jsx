@@ -25,17 +25,19 @@ class WeatherList extends Component {
           </tr>;
     }
     render() {
-        return <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>City</th>
-                <th>Temperature (°C)</th>
-                <th>Pressure (hPa)</th>
-                <th>Humidity (%)</th>
-              </tr>
-            </thead>
-            <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
-          </table>;
+      return (
+          <table className="table">
+                <thead>
+                  <tr>
+                    <th>City</th>
+                    <th>Temperature (°C)</th>
+                    <th>Pressure (hPa)</th>
+                    <th>Humidity (%)</th>
+                  </tr>
+                </thead>
+                <tbody>{this.props.weather.map(this.renderWeather)}</tbody>
+              </table>
+      )
     }
 }
 
